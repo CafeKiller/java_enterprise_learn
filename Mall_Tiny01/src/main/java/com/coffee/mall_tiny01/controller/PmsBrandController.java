@@ -37,6 +37,8 @@ public class PmsBrandController {
     /**
      * 创建一个品牌信息
      * */
+    @PostMapping("/create")
+    @ResponseBody
     public CommonResult createBrand(@RequestBody PmsBrand pmsBrand){
        CommonResult commonResult;
         int count = brandService.createBrand(pmsBrand);
