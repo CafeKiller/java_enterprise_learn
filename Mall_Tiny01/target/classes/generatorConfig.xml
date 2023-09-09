@@ -11,7 +11,6 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
         <property name="javaFileEncoding" value="UTF-8"/>
-
         <!-- 为模型生成序列化方法 -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
         <!-- 为生成的java模型创建toString方法 -->
