@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- mybatis generator 配置 -->
+<generatorConfiguration>
+    <!-- 配置源 -->
+    <properties resource="generator.properties"></properties>
+    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- 配置数据库连接  -->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+            <!-- 处理MySQL驱动升级到8.0后 无法生成指定数据库代码的问题 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <!-- 指定生成model的路径 -->
+        <javaModelGenerator targetPackage="com.coffee.mall_tiny01.mbg.model"
+                            targetProject="Mall_Tiny01\src\main\java"></javaModelGenerator>
+        <!-- 指定生成mapper.xml的路径 -->
+        <sqlMapGenerator targetPackage="com.coffee.mall_tiny01.mbg.mapper"
+                         targetProject="Mall_Tiny01\src\main\resources"></sqlMapGenerator>
+        <!-- 指定生成mapper接口的路径 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.coffee.mall_tiny01.mbg.mapper"
+                             targetProject="Mall_Tiny01\src\main\resources"></javaClientGenerator>
+
+        <table tableName="pms_brand">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
