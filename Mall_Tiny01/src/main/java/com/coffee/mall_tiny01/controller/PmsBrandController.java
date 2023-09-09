@@ -104,4 +104,13 @@ public class PmsBrandController {
         return CommonResult.success(CommonPage.restPage(brandList));
     }
 
+    /**
+     * 根据id获取单个品牌的信息
+     * */
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<PmsBrand> brand(@PathVariable("id") Long id){
+        return CommonResult.success(brandService.getBrand(id));
+    }
+
 }
