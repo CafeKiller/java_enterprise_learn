@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, first_letter, sort, factory_status, show_status, product_count, product_comment_count, 
+    id, name, first_letter, sort, factory_status, show_status, product_count, product_comment_count,
     logo, big_pic
   </sql>
   <sql id="Blob_Column_List">
@@ -112,7 +112,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -133,14 +133,14 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_brand (name, first_letter, sort, 
-      factory_status, show_status, product_count, 
-      product_comment_count, logo, big_pic, 
-      brand_story)
-    values (#{name,jdbcType=VARCHAR}, #{firstLetter,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
-      #{factoryStatus,jdbcType=INTEGER}, #{showStatus,jdbcType=INTEGER}, #{productCount,jdbcType=INTEGER}, 
-      #{productCommentCount,jdbcType=INTEGER}, #{logo,jdbcType=VARCHAR}, #{bigPic,jdbcType=VARCHAR}, 
-      #{brandStory,jdbcType=LONGVARCHAR})
+    insert into pms_brand (name, first_letter, sort,
+    factory_status, show_status, product_count,
+    product_comment_count, logo, big_pic,
+    brand_story)
+    values (#{name,jdbcType=VARCHAR}, #{firstLetter,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER},
+    #{factoryStatus,jdbcType=INTEGER}, #{showStatus,jdbcType=INTEGER}, #{productCount,jdbcType=INTEGER},
+    #{productCommentCount,jdbcType=INTEGER}, #{logo,jdbcType=VARCHAR}, #{bigPic,jdbcType=VARCHAR},
+    #{brandStory,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.coffee.mall_tiny01.mbg.model.PmsBrand">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -212,7 +212,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.coffee.mall_tiny01.mbg.model.PmsBrandExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.coffee.mall_tiny01.mbg.model.PmsBrandExample" resultType="java.lang.Long">
     select count(*) from pms_brand
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -262,16 +262,16 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update pms_brand
     set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      first_letter = #{record.firstLetter,jdbcType=VARCHAR},
-      sort = #{record.sort,jdbcType=INTEGER},
-      factory_status = #{record.factoryStatus,jdbcType=INTEGER},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      product_count = #{record.productCount,jdbcType=INTEGER},
-      product_comment_count = #{record.productCommentCount,jdbcType=INTEGER},
-      logo = #{record.logo,jdbcType=VARCHAR},
-      big_pic = #{record.bigPic,jdbcType=VARCHAR},
-      brand_story = #{record.brandStory,jdbcType=LONGVARCHAR}
+    name = #{record.name,jdbcType=VARCHAR},
+    first_letter = #{record.firstLetter,jdbcType=VARCHAR},
+    sort = #{record.sort,jdbcType=INTEGER},
+    factory_status = #{record.factoryStatus,jdbcType=INTEGER},
+    show_status = #{record.showStatus,jdbcType=INTEGER},
+    product_count = #{record.productCount,jdbcType=INTEGER},
+    product_comment_count = #{record.productCommentCount,jdbcType=INTEGER},
+    logo = #{record.logo,jdbcType=VARCHAR},
+    big_pic = #{record.bigPic,jdbcType=VARCHAR},
+    brand_story = #{record.brandStory,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -279,15 +279,15 @@
   <update id="updateByExample" parameterType="map">
     update pms_brand
     set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      first_letter = #{record.firstLetter,jdbcType=VARCHAR},
-      sort = #{record.sort,jdbcType=INTEGER},
-      factory_status = #{record.factoryStatus,jdbcType=INTEGER},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      product_count = #{record.productCount,jdbcType=INTEGER},
-      product_comment_count = #{record.productCommentCount,jdbcType=INTEGER},
-      logo = #{record.logo,jdbcType=VARCHAR},
-      big_pic = #{record.bigPic,jdbcType=VARCHAR}
+    name = #{record.name,jdbcType=VARCHAR},
+    first_letter = #{record.firstLetter,jdbcType=VARCHAR},
+    sort = #{record.sort,jdbcType=INTEGER},
+    factory_status = #{record.factoryStatus,jdbcType=INTEGER},
+    show_status = #{record.showStatus,jdbcType=INTEGER},
+    product_count = #{record.productCount,jdbcType=INTEGER},
+    product_comment_count = #{record.productCommentCount,jdbcType=INTEGER},
+    logo = #{record.logo,jdbcType=VARCHAR},
+    big_pic = #{record.bigPic,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -331,28 +331,28 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.coffee.mall_tiny01.mbg.model.PmsBrand">
     update pms_brand
     set name = #{name,jdbcType=VARCHAR},
-      first_letter = #{firstLetter,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=INTEGER},
-      factory_status = #{factoryStatus,jdbcType=INTEGER},
-      show_status = #{showStatus,jdbcType=INTEGER},
-      product_count = #{productCount,jdbcType=INTEGER},
-      product_comment_count = #{productCommentCount,jdbcType=INTEGER},
-      logo = #{logo,jdbcType=VARCHAR},
-      big_pic = #{bigPic,jdbcType=VARCHAR},
-      brand_story = #{brandStory,jdbcType=LONGVARCHAR}
+        first_letter = #{firstLetter,jdbcType=VARCHAR},
+        sort = #{sort,jdbcType=INTEGER},
+        factory_status = #{factoryStatus,jdbcType=INTEGER},
+        show_status = #{showStatus,jdbcType=INTEGER},
+        product_count = #{productCount,jdbcType=INTEGER},
+        product_comment_count = #{productCommentCount,jdbcType=INTEGER},
+        logo = #{logo,jdbcType=VARCHAR},
+        big_pic = #{bigPic,jdbcType=VARCHAR},
+        brand_story = #{brandStory,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.coffee.mall_tiny01.mbg.model.PmsBrand">
     update pms_brand
     set name = #{name,jdbcType=VARCHAR},
-      first_letter = #{firstLetter,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=INTEGER},
-      factory_status = #{factoryStatus,jdbcType=INTEGER},
-      show_status = #{showStatus,jdbcType=INTEGER},
-      product_count = #{productCount,jdbcType=INTEGER},
-      product_comment_count = #{productCommentCount,jdbcType=INTEGER},
-      logo = #{logo,jdbcType=VARCHAR},
-      big_pic = #{bigPic,jdbcType=VARCHAR}
+        first_letter = #{firstLetter,jdbcType=VARCHAR},
+        sort = #{sort,jdbcType=INTEGER},
+        factory_status = #{factoryStatus,jdbcType=INTEGER},
+        show_status = #{showStatus,jdbcType=INTEGER},
+        product_count = #{productCount,jdbcType=INTEGER},
+        product_comment_count = #{productCommentCount,jdbcType=INTEGER},
+        logo = #{logo,jdbcType=VARCHAR},
+        big_pic = #{bigPic,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
