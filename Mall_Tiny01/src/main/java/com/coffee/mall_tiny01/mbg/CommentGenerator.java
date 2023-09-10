@@ -38,9 +38,10 @@ public class CommentGenerator extends DefaultCommentGenerator {
         // 根据参数和备注信息判断是否需要添加注释信息
         if (addRemarkComments && StringUtility.stringHasValue(remarks)){
             // addFieldJavaDoc(field, remarks);
-            if (remarks.contains("\"")){
+            if (remarks.contains("\"")){ // 对数据库中的特殊字符进行转义
                 remarks = remarks.replace("\"","'");
             }
+            // 给model的字段添加swagger注释
             field.addJavaDocLine("@ApiModelProperty(value =  \""+remarks+"\")");
         }
     }
@@ -63,6 +64,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
     @Override
     public void addJavaFileComment(CompilationUnit compilationUnit) {
         super.addJavaFileComment(compilationUnit);
+        // 只在model 中添加swagger注解类的导入
         if (!compilationUnit.isJavaInterface() && !compilationUnit.getType().getFullyQualifiedName().contains(EXAMPLE_SUFFIX)){
             compilationUnit.addImportedType(new FullyQualifiedJavaType(API_MODEL_PROPERTY_FULL_CLASS_NAME));
         }
