@@ -98,6 +98,8 @@
             <version>2.7.0</version>
         </dependency>
 
+        <!-- swagger依赖包 用于处理以下的异常 -->
+        <!-- Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NoSuchFieldError: NONE -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
