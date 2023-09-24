@@ -20,6 +20,9 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     @Value("${redis.key.expire.authCode}")
     private Long AUTH_CODE_EXPIRE_SECONDS;
 
+    /**
+     * 生成对应验证码
+     * */
     @Override
     public CommonResult generateAuthCode(String telephone) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -27,11 +30,13 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         for (int i = 0; i < 6; i++) {
             stringBuilder.append(random.nextInt(10));
         }
+        /* 验证码绑定手机号, 并存储至redis */
         redisService.set(REDIS_KEY_PREFIX_AUTH_CODE + telephone, stringBuilder.toString());
         redisService.expire(REDIS_KEY_PREFIX_AUTH_CODE +telephone, AUTH_CODE_EXPIRE_SECONDS);
         return CommonResult.success(stringBuilder.toString(), "获取验证码成功");
     }
 
+    /* 对输入的验证码进行校验 */
     @Override
     public CommonResult verifyAuthCode(String telephone, String authCode) {
 
