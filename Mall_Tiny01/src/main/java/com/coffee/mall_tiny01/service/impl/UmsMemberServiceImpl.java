@@ -5,6 +5,7 @@ import com.coffee.mall_tiny01.service.RedisService;
 import com.coffee.mall_tiny01.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 
 import java.util.Random;
 
@@ -33,6 +34,17 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Override
     public CommonResult verifyAuthCode(String telephone, String authCode) {
-        return null;
+
+        if (StringUtils.isEmpty(authCode)) return CommonResult.failed("请输入验证码");
+
+        String realAuthCode = redisService.get(REDIS_KEY_PREFIX_AUTH_CODE + telephone);
+
+        boolean result = authCode.equals(realAuthCode);
+
+        if (result){
+            return CommonResult.success(null, "验证码校验成功");
+        } else {
+            return CommonResult.failed("验证码不正确");
+        }
     }
 }
