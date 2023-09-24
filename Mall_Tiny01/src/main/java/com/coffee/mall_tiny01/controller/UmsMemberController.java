@@ -7,26 +7,28 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 
 @Api(tags = "UmsMemberController", description = "会员登录注册管理")
 @RestController("/sso")
 public class UmsMemberController {
 
     @Autowired
-    private UmsMemberService memberService;
+    private UmsMemberService umsMemberService;
 
     @ApiOperation("获取验证码")
     @GetMapping("/getAuthCode")
     @ResponseBody
     public CommonResult getAuthCode(@RequestParam String telephone){
-        return memberService.generateAuthCode(telephone);
+        return umsMemberService.generateAuthCode(telephone);
     }
 
     @ApiOperation("判断验证码是否正确")
     @PostMapping("/verifyAuthCode")
     @ResponseBody
     public CommonResult updatePassword(@RequestParam String telephone, @RequestParam String authCode){
-        return memberService.verifyAuthCode(telephone, authCode);
+        return umsMemberService.verifyAuthCode(telephone, authCode);
     }
 
 }
