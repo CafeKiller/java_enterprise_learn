@@ -22,6 +22,13 @@ public class CommonResult<T> {
     }
 
     /**
+     *
+     * */
+    public static <T> CommonResult<T> success(T data, String message){
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(), message, data);
+    }
+
+    /**
      * 响应错误, 并返回错误代码
      * @param errorCode 错误码
      * */

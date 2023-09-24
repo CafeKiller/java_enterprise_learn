@@ -1,15 +1,17 @@
 package com.coffee.mall_tiny01.service.impl;
 
 import com.coffee.mall_tiny01.common.api.CommonResult;
+import com.coffee.mall_tiny01.service.RedisService;
 import com.coffee.mall_tiny01.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.connection.RedisServer;
+
+import java.util.Random;
 
 public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Autowired
-    private RedisServer redisServer;
+    private RedisService redisService;
 
     @Value("${redis.key.prefix.authCode}")
     private String REDIS_KEY_PREFIX_AUTH_CODE;
@@ -19,7 +21,14 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Override
     public CommonResult generateAuthCode(String telephone) {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < 6; i++) {
+            stringBuilder.append(random.nextInt(10));
+        }
+        redisService.set(REDIS_KEY_PREFIX_AUTH_CODE + telephone, stringBuilder.toString());
+        redisService.expire(REDIS_KEY_PREFIX_AUTH_CODE +telephone, AUTH_CODE_EXPIRE_SECONDS);
+        return CommonResult.success(stringBuilder.toString(), "获取验证码成功");
     }
 
     @Override
