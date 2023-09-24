@@ -10,6 +10,10 @@ import org.springframework.util.StringUtils;
 
 import java.util.Random;
 
+
+/**
+ * 会员管理service实现类
+ * */
 @Service
 public class UmsMemberServiceImpl implements UmsMemberService {
 

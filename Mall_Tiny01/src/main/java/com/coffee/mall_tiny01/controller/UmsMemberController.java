@@ -7,8 +7,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-
+/*
+* 会员登录注册管理Controller
+* */
 
 @Api(tags = "UmsMemberController", description = "会员登录注册管理")
 @RestController("/sso")
