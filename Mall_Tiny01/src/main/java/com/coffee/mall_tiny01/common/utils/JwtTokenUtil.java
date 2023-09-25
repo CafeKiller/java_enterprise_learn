@@ -110,4 +110,20 @@ public class JwtTokenUtil {
         return generateToken(claims);
     }
 
+    /**
+     * 判断token是否可以被刷新
+     * */
+    public boolean canRefresh(String token){
+        return !isTokenExpiration(token);
+    }
+
+    /**
+     * 刷新token
+     * */
+    public String refreshToken(String token){
+        Claims claims = getClaimsFromToken(token);
+        claims.put(CLAIM_KEY_CREATED, new Date());
+        return generateToken(claims);
+    }
+
 }
