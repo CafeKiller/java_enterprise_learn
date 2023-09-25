@@ -1,6 +1,7 @@
 package com.coffee.mall_tiny01.common.utils;
 
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
@@ -36,10 +37,29 @@ public class JwtTokenUtil {
     }
 
     /**
+     * 从token中获取JWT中的负载
+     * */
+    private Claims getClaimsFromToken(String token){
+        Claims claims = null;
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey(secret)
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (Exception e){
+            LOGGER.info("JWT格式验证失败:{}", token);
+        }
+        return claims;
+    }
+
+
+    /**
      * 生成token的过期时间
      * */
     private Date generateExpirationDate(){
         return new Date(System.currentTimeMillis() + expiration * 1000);
     }
+
+
 
 }
