@@ -60,6 +60,42 @@ public class JwtTokenUtil {
         return new Date(System.currentTimeMillis() + expiration * 1000);
     }
 
+    /*
+    * 从token中获取登录用户名
+    * */
+    public String getUserNameFromToken(String token){
+        String username;
+        try {
+            Claims claims = getClaimsFromToken(token);
+            username = claims.getSubject();
+        }catch (Exception e){
+            username = null;
+        }
+        return username;
+    }
+
+    /**
+     * 验证token是否还有效
+     * */
+    public boolean validateToken(String token){
+
+    }
+
+    /**
+     * 判断token是否失效
+     * */
+    private boolean isTokenExpiration(String token){
+        Date expiredDate = getExpiredDateFromToken(token);
+        return expiredDate.before(new Date());
+    }
+
+    /**
+     * 从token中获取过期时间
+     * */
+    private Date getExpiredDateFromToken(String token){
+        Claims claims = getClaimsFromToken(token);
+        return claims.getExpiration();
+    }
 
 
 }
