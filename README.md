@@ -10,8 +10,11 @@ Java电商项目，纯纯的练手项目哈，正经人谁天天写电商项目�
 | LibraryName | Description |
 |:------------|:------------|
 | Java        |             |
-| SpingBoot   | spring轻量级框架 |
+| SpringBoot  | spring轻量级框架 |
 | MyBatis     | 持久层框架       |
+| PageHelper  | Mybatis分页插件 |
+| Swagger     | API文档生成工具   |
+| redis       | NoSQL       |
 
 ## 说明
 - Creator : Coffee_Killer
