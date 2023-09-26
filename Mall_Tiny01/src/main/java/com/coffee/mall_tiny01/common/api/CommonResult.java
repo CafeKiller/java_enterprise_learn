@@ -1,5 +1,7 @@
 package com.coffee.mall_tiny01.common.api;
 
+import org.checkerframework.checker.units.qual.C;
+
 public class CommonResult<T> {
 
     private long code;
@@ -46,10 +48,31 @@ public class CommonResult<T> {
 
     /**
      * 参数校验失败, 响应结果
+     * */
+    public static <T> CommonResult<T> validateFailed(){
+        return failed(ResultCode.VALIDATE_FAILED);
+    }
+
+    /**
+     * 参数校验失败, 响应结果
      * @param message 提示信息
      * */
     public static <T> CommonResult<T> validateFailed(String message){
         return new CommonResult<>(ResultCode.VALIDATE_FAILED.getCode(), message, null);
+    }
+
+    /**
+     * 未登录返回结果
+     * */
+    public static <T> CommonResult<T> unauthorized(T data){
+        return new CommonResult<>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
+    }
+
+    /*
+    * 未授权返回结果
+    * */
+    public static <T> CommonResult<T> forbidden(T data){
+        return new CommonResult<>(ResultCode.FAILED.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
     }
 
     public long getCode() {
