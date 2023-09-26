@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 后台用户与角色管理自定义Dao
  * */
-public interface UmsAdminROleRelationDao {
+public interface UmsAdminRoleRelationDao {
 
     /*
     * 获取用户所有权限(包含+-权限)
