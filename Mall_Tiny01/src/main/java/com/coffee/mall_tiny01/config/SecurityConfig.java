@@ -3,18 +3,29 @@ package com.coffee.mall_tiny01.config;
 import com.coffee.mall_tiny01.common.JwtAuthenticationTokenFilter;
 import com.coffee.mall_tiny01.common.RestAuthenticationEntryPoint;
 import com.coffee.mall_tiny01.common.RestfulAccessDeniedHandler;
+import com.coffee.mall_tiny01.dto.AdminUserDetails;
+import com.coffee.mall_tiny01.mbg.model.UmsAdmin;
+import com.coffee.mall_tiny01.mbg.model.UmsPermission;
 import com.coffee.mall_tiny01.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.util.List;
 
 
 /*
@@ -67,9 +78,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restAuthenticationEntryPoint);
     }
 
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService())
+                .passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return username -> {
+            UmsAdmin admin = adminService.getAnimeByUsername(username);
+            if (admin != null){
+                List<UmsPermission> permissionList = adminService.getPermissionList(admin.getId());
+                return new AdminUserDetails(admin, permissionList);
+            }
+            throw new UsernameNotFoundException("用户名或密码错误");
+        };
+    }
 
     @Bean
     public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
         return new JwtAuthenticationTokenFilter();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }
