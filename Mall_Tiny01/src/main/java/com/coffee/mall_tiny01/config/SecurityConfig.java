@@ -1,5 +1,6 @@
 package com.coffee.mall_tiny01.config;
 
+import com.coffee.mall_tiny01.common.JwtAuthenticationTokenFilter;
 import com.coffee.mall_tiny01.common.RestAuthenticationEntryPoint;
 import com.coffee.mall_tiny01.common.RestfulAccessDeniedHandler;
 import com.coffee.mall_tiny01.service.UmsAdminService;
@@ -12,6 +13,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 /*
@@ -58,11 +61,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 禁止缓存
         http.headers().cacheControl();
         // 添加JWT filter
-        // http.addFilterBefore()
-
+        http.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.exceptionHandling()
+                .accessDeniedHandler(restfulAccessDeniedHandler)
+                .authenticationEntryPoint(restAuthenticationEntryPoint);
     }
 
 
-    // @Bean
-//    public
+    @Bean
+    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
+        return new JwtAuthenticationTokenFilter();
+    }
 }
