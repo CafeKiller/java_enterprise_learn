@@ -11,7 +11,10 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -45,7 +48,7 @@ public class Swagger2Config {
                 .paths(PathSelectors.any())
                 .build()
                 // 添加登录认证
-                .securitySchemes();
+                .securitySchemes(securitySchemes());
     }
 
     private ApiInfo apiInfo(){
@@ -65,4 +68,18 @@ public class Swagger2Config {
         return result;
     }
 
+    private List<SecurityContext> securityContexts(){
+        // 设置需要登录验证的路径
+        ArrayList<SecurityContext> result = new ArrayList<>();
+//        result.add();
+    }
+
+    private List<SecurityReference> defaultAuth(){
+        ArrayList<SecurityReference> result = new ArrayList<>();
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverythiny");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        result.add(new SecurityReference("Authorization", authorizationScopes));
+        return result;
+    }
 }
