@@ -10,9 +10,14 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -38,7 +43,9 @@ public class Swagger2Config {
 
                 // 为包下所有的方法生成API文档
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                // 添加登录认证
+                .securitySchemes();
     }
 
     private ApiInfo apiInfo(){
@@ -48,6 +55,14 @@ public class Swagger2Config {
                 .contact("Coffee_Killer")
                 .version("1.0.0")
                 .build();
+    }
+
+    private List<ApiKey> securitySchemes(){
+        // 设置请求头信息
+        ArrayList<ApiKey> result = new ArrayList<>();
+        ApiKey apiKey = new ApiKey("Authorization", "Authorization", "header");
+        result.add(apiKey);
+        return result;
     }
 
 }
