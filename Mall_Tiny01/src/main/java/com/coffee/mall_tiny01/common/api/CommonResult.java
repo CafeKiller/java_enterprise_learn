@@ -47,6 +47,13 @@ public class CommonResult<T> {
     }
 
     /**
+     * 失败返回结果
+     * */
+    public static <T> CommonResult<T> failed(){
+        return failed(ResultCode.VALIDATE_FAILED);
+    }
+
+    /**
      * 参数校验失败, 响应结果
      * */
     public static <T> CommonResult<T> validateFailed(){
