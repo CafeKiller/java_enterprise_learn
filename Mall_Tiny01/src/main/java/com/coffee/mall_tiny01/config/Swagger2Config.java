@@ -71,7 +71,15 @@ public class Swagger2Config {
     private List<SecurityContext> securityContexts(){
         // 设置需要登录验证的路径
         ArrayList<SecurityContext> result = new ArrayList<>();
-//        result.add();
+        result.add(getContextByPath("/brand/.*"));
+        return result;
+    }
+
+    private SecurityContext getContextByPath(String pathRegex){
+        return SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.regex(pathRegex))
+                .build();
     }
 
     private List<SecurityReference> defaultAuth(){
