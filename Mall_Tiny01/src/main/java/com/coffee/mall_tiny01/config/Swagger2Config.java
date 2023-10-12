@@ -48,7 +48,8 @@ public class Swagger2Config {
                 .paths(PathSelectors.any())
                 .build()
                 // 添加登录认证
-                .securitySchemes(securitySchemes());
+                .securitySchemes(securitySchemes())
+                .securityContexts(securityContexts());
     }
 
     private ApiInfo apiInfo(){
