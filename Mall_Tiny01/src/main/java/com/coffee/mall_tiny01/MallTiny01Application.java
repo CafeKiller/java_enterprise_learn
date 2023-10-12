@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@MapperScan("com.coffee.mall_tiny01.mbg.mapper")
+@MapperScan(value = {"com.coffee.mall_tiny01.mbg.mapper","com.coffee.mall_tiny01.dao"})
 @EnableSwagger2
 public class MallTiny01Application {
 

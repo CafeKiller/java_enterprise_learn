@@ -37,7 +37,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private String tokenHead;
     @Autowired
     private UmsAdminMapper adminMapper;
-    @Autowired
+    @Autowired()
     private UmsAdminRoleRelationDao adminRoleRelationDao;
 
     @Override
@@ -91,6 +91,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public List<UmsPermission> getPermissionList(Long adminId) {
+        System.out.println("adminRoleRelationDao="+ adminRoleRelationDao);
         return adminRoleRelationDao.getPermissionList(adminId);
     }
 }

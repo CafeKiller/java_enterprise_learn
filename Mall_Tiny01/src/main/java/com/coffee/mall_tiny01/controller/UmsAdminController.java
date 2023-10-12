@@ -19,8 +19,9 @@ import java.util.List;
 /**
  * 后台用户管理
  * */
+@Controller
 @Api(tags = "UmsAdminController", description = "后台用户管理")
-@RestController("/admin")
+@RequestMapping("/admin")
 public class UmsAdminController {
 
     @Autowired
