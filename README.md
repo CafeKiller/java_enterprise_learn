@@ -1,21 +1,14 @@
-# Cafe_Mall_Lerning
+# Java-Enterprise-Learn
 
-CoffeeKiller出品，古法编程，无AI，纯手敲，天然又健康  
-Java电商项目，纯纯的练手项目哈，正经人谁天天写电商项目啊(*￣rǒ￣)  
-但是捏~ 得承认的是，电商项目确实是比较综合的项目类型，非常适合练手，而且不少公司也看重有电商开发经验的Javar  
-所以我也不免俗了，大家都敲我也敲，但是本人没有从事过电商项目的公司，所以这些东西也是向社区内的大佬借鉴(抄)的，有既视感很正常哈~还望见谅
+CoffeeKiller, ancient programming, no AI, pure hand knocking, natural and healthy!  
+
+Java e-commerce project, pure practice project, who would write e-commerce project every day (*￣rǒ￣).  
+
+However, I have to admit that e-commerce projects are really a comprehensive type of project, which is very suitable for practicing, and many companies also value Javar developers with e-commerce experience.  
+
+So I'm not exempt, everyone knocked me also knock, but I have not engaged in the e-commerce project company, so these things are also borrowed from the community big brother (copy), there is a sense of vestigial vision is very normal ha ~ I hope to forgive you!  
 
 
-## 相关技术
-| LibraryName | Description |
-|:------------|:------------|
-| Java        |             |
-| SpringBoot  | spring轻量级框架 |
-| MyBatis     | 持久层框架       |
-| PageHelper  | Mybatis分页插件 |
-| Swagger     | API文档生成工具   |
-| redis       | NoSQL       |
-
-## 说明
+# Description
 - Creator : Coffee_Killer
 - Timer: 2023_09_09

@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Cafe_Mall_Lerning" />
-        <module name="Mall_Tiny01" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Mall_Tiny01" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
