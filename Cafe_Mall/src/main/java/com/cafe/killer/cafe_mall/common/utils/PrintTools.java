@@ -1,4 +1,4 @@
-package com.cafe.killer.cafe_mall.utils;
+package com.cafe.killer.cafe_mall.common.utils;
 
 public class PrintTools {
 

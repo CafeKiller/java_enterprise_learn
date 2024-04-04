@@ -1,13 +1,11 @@
 package com.cafe.killer.cafe_mall.mbg;
 
-import com.cafe.killer.cafe_mall.utils.PrintTools;
+import com.cafe.killer.cafe_mall.common.utils.PrintTools;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
-import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
