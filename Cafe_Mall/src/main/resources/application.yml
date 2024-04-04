@@ -4,12 +4,32 @@ server:
 spring:
   application:
     name: Cafe_Mall
-  datasource:
+  datasource: # 数据库配置
     url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: root
+  redis: # redis配置
+    host: localhost
+    database: 0 # redis 数据库索引
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8 # 连接池最大连接数
+        max-wait: -1ms # 连接池最大阻塞等待时间
+        max-idle: 8 # 连接池中最大空闲连接
+        min-idle: 0 # 连接池中最小空闲连接
+    timeout: 3000ms # 连接超时时间
 
 mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
     - classpath*:com/**/mapper/*.xml
+
+# 自定义 redis 配置
+redis:
+  key:
+    prefix:
+      authCode: "portal:authCode:"
+    expire:
+      authCode: 120 # 验证码超时时间
