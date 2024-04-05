@@ -7,7 +7,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 // FIX: 修复 Mybatis 无法正确扫描问题
-@MapperScan("com.cafe.killer.cafe_mall.mbg.mapper")
+//@MapperScan({"com.cafe.killer.cafe_mall.mbg.mapper","com.cafe.killer.cafe_mall.dao"})
 // FIX: 修复 SwaggerUI 启动失败问题
 @EnableSwagger2
 public class CafeMallApplication {
