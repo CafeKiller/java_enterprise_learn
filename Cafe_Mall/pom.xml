@@ -107,6 +107,14 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <!-- FIX: javax.xml.bind.DatatypeConverter报错问题
+                JWT 在高版本 JDK 中丢失问题-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
 
     </dependencies>
 

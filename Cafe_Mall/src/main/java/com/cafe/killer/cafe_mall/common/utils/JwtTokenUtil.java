@@ -71,6 +71,16 @@ public class JwtTokenUtil {
     }
 
     /**
+     * 验证 token 是否有效
+     * @param token 客户端传入的 token
+     * @param userDetails 从数据库中查询出来的用户信息
+     * */
+    public boolean validateToken(String token, UserDetails userDetails) {
+        String username = getUserNameFromToken(token);
+        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+    }
+
+    /**
      * 生成 token 过期时间
      * */
     private Date generateExpirationDate() {

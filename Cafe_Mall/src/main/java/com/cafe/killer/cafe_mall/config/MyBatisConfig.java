@@ -1,7 +1,7 @@
 package com.cafe.killer.cafe_mall.config;
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Configuration;
 
 
 /**
@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Configurable;
  * @author Coffee_Killer
  * */
 
-@Configurable
-@MapperScan("com.cafe.killer.cafe_mall.mbg.mapper")
+@Configuration
+@MapperScan({"com.cafe.killer.cafe_mall.mbg.mapper","com.cafe.killer.cafe_mall.dao"})
 public class MyBatisConfig {
 
 }
