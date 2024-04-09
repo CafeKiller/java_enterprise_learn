@@ -11,7 +11,7 @@ public class EsProductAttributeValue implements Serializable {
 
     private Long id;
 
-    private Long productAttributeID;
+    private Long productAttributeId;
 
     // 属性值
     @Field(type = FieldType.Keyword)
@@ -35,11 +35,11 @@ public class EsProductAttributeValue implements Serializable {
     }
 
     public Long getProductAttributeID() {
-        return productAttributeID;
+        return productAttributeId;
     }
 
     public void setProductAttributeID(Long productAttributeID) {
-        this.productAttributeID = productAttributeID;
+        this.productAttributeId = productAttributeID;
     }
 
     public String getValue() {
