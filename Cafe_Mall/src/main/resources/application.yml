@@ -30,6 +30,13 @@ spring:
       host: localhost
       port: 27017
       database: mall-port
+  rabbitmq: # rabbitMQ 配置
+    host: localhost
+    port: 5672
+    virtual-host: /mall # RabbitMQ 虚拟host
+    username: mall
+    password: mall
+    publisher-confirms: true # 回调异步消息, 必须设置为true
 
 # MyBatis 配置
 mybatis:
